@@ -1,0 +1,101 @@
+config.json
+
+0微信添加好友
+1.先将config.json文件中的run_order设置成0
+2.将要添加的手机号码放入/data/name.txt中
+3.reminder是发送给添加人的提示语中目前默认的话，重点：他的个数要与wechataccounts的一样，他们是一一对应的
+4.inputhint是发送给添加人的提示语，重点：他的个数要与wechataccounts的一样，他们是一一对应的
+5."tag": "0118",//加好友设置的标签
+6.friends是每个微信添加好友的个数
+7.continue_add单个微信一次加几个好友
+8.add_f_sleep每加完一轮的休息时间
+
+1添加公众号
+1.先将config.json文件中的run_order设置成1
+2.将要添加的公众号放入/data/official.txt中
+
+2微信聊天
+1.先将config.json文件中的run_order设置成2
+2.account是微信中的好友，可以随便写，一个微信写一个进入也没问题（这里是内部的微信号，不要乱写成外面的人的微信）
+3.chats是聊天的文字，随即获取发送
+4.endsign是微信通讯录下的z下的最后一个通讯名，所有的微信统一
+5.chatmode聊天模式 0文字，1语音，2表情
+
+3发朋友圈
+1.先将config.json文件中的run_order设置成3
+2.将要发送的图片放入手机图库中
+3.将要跟随分享的文字放入/data/sendcircle.txt中
+3.choicenum设置成要分享的图片数量（本次发朋友圈的图片是几张）
+
+4分享文章
+1.先将config.json文件中的run_order设置成4
+2.要分享的文章地址，放入/data/sharearticle.txt中一行一个地址（目前只放一个地址）
+3.在要运行的所有微信中找到一个相同的好友，是我们内部的好友，在sharearticle.json文件中的commonname中改写成这个微信好友的名字
+4.sharetxt是分享时跟着一起分享的文字
+
+5朋友圈评论
+1.先将config.json文件中的run_order设置成5
+2."commentmode": 0,评论模式； 0表示进入朋友圈评论前几条（条数根据commentstrs的个数来）；1表示指定朋友的朋友圈进行评论（条数根据commentstrs的个数来）；（目前只有0，1待开发）
+3.commentstrs是设置的评论文字，这个有几句就评论几条朋友圈，不要太大，（尽量别超过4条）
+
+
+6 阅读公众号文章
+1.先将config.json文件中的run_order设置成6
+2.officialnames设置要读的公众号
+
+7 备注
+1.先将config.json文件中的run_order设置成7
+2.wechat_remark_friends，将要备注的微信好友写在后面
+3.remark备注的名字与wechat_remark_friends一一对应
+
+
+9 微信群聊天
+1.先将config.json文件中的run_order设置成9
+2.group_names群名他的格式[]中，有多少微信就需要多少中括号（即[[],[],[],...]）这样，而每个中括号内部对应的是各个微信中的群名（如[["现金贷1群","现金贷2群",...],["现金贷1群","现金贷2群",...],["现金贷1群","现金贷2群",...],...]）
+3.file_group_txt发送的文字所在地址，在/data/groupchat.txt中设置文字（重点：不要带上《书名号》以及其他特殊符号，输入不了）
+4.group_image_count是否有图片需要发送，如果有提前将图片保存进手机，直接设置要发送图片的数量即可，没有的话设置为0
+
+
+10 运行sreachw文件，查找女性
+1.将config.json文件中的run_order设置成10即可
+
+重点：：：：：run_order的设置可以单个，可以多个，多个的时候会按照你的顺序自动依次执行，不再需要多次输入运行语句
+"fun_sleep": [3, 1, 1, 1, 1, 1, 1],//这个是表示每个功能间的间隔时间，以'分'为单位  这个个数是以run_order的个数作为参考的，比run_order少一个（记得只能少一个）可以多，但是会影响结束时间
+
+{
+	"wechataccounts": ["微信", "微信分身1", "微信分身2", "微信分身3", "微信分身4", "微信分身5", "微信分身6", "微信分身7", "微信分身8", "微信分身9", "微信分身10", "微信分身11", "微信分身12", "微信分身13", "微信分身14", "微信分身15", "微信分身16", "微信分身17"],
+	"file_add_friends": "/data/name.txt",//加好友的文件地址
+	"reminder": ["我是Elva", "", "我是Elva", "我是小飞乐"],//微信中默认的提示语，与微信名一一对应
+	"inputhint": ["你好啊", "你好啊", "你好啊", "你好啊"],//重新输入需要输入的提示语，与微信名一一对应
+	"tag": "0118",//加好友时设置的标签
+	"continue_add": 2,
+	"friends":1,//加好友个数
+	"add_f_sleep": 1500,//每加完一轮的休息时间
+	"file_add_official": "/data/official.txt",//加公众号地址
+	"chatmode": 0,
+	"account": ["行素", "张简之"],//聊天的微信好友
+    "chats": ["你好", "你现在在干嘛", "红米1号机主账号", "www.baidu.com"],//聊天的文字
+    "endsign": "zzzz",//微信通讯录下的z的最后一个好友名称，要统一
+	"file_send_circle": "/data/sendcircle.txt",//发送朋友圈的文字
+	"choicenum": 1,//发送朋友圈选的图片数量
+	"file_share_article": "/data/sharearticle.txt",//分享文章地址
+	"commentmode": 0,//评论模式
+	"comment_wechat_friend": ["艾森"],//指定微信好友
+	"commonname": "同锋",//分享文章中所有微信共有的微信好友
+	"sharetxt": "科技发展真快",//分享文章的文字
+	"commentstrs": ["真棒", "牛逼"],
+	"officialnames": ["贝因美"],
+	"wechat_remark_friends": ["艾森"],
+	"remark": ["aaa"],
+	"group_names": [["图片"], ["图片"]],
+	"file_group_txt": "/data/groupchat.txt",
+	"group_image_count": 1,
+	"run_order": [9],
+	"run_order": [0, 1, 2, 3, 4, 5, 6, 7],
+	"fun_sleep": [3, 1, 1, 1, 1, 1, 1],
+	"startwechat": 0//从哪一个微信开始
+}
+
+重点是不要修改config.json中的字段名，也不要删除
+
+重点：startwechat的值是起始值，循环也从这个值开始 从0开始向后数
